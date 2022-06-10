@@ -32,7 +32,7 @@ def score_game(random_predict) -> int:
         int: mean number of times 
     """
     count_ls = [] # the list for saving counting of guessess
-    np.random.seed(1) # record the seed for reproducibility
+    #np.random.seed(1) # record the seed for reproducibility
     random_array = np.random.randint(1, 101, size=(1000)) # guessed list of numbers
     
     for number in random_array:
