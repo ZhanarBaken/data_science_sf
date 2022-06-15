@@ -1,18 +1,62 @@
-''''Guess the number Game'''
-
 import numpy as np
-number = np.random.randint(1, 101) #guessed number
-count = 0
 
-while True:
-    count += 1
-    predict_number = int(input("Guess thr number from 1 to 100: "))
+def optimal_predict(number: int = 1) -> int:
+    '''The machine predicts and guesses a number less then 20 times
+
+    Args:
+        number (int, optional): Guessed number . Defaults to 1.
+
+    Returns:
+        int: Number of times
+    '''
     
-    if predict_number > number:
-        print("The number has to be less")
-        
-    elif predict_number < number:
-        print("The number has to be more")
-    else:
-        print(f"You guessed the number! This is {number}, it takes {count} times")
-        break # end of game, go out from cycle
+    min = 1
+    max = 1000
+
+    number = np.random.randint(min, max) #randomly guessed number 
+
+    count = 0
+    
+# binary search
+    while True:
+        count+=1
+        mid = (min+max) // 2
+    
+        if mid > number:
+          max = mid
+    
+        elif mid < number:
+          min = mid
+
+        else:
+            print(f"Компьютер угадал число за {count} попыток. Это число {number}")
+            break #the execution of the loop 
+    return count
+
+
+def score_game(optimal_predict) -> int:
+
+  """How many in mean number of times from 1000 ways, our algorithm predict 
+
+    Args:
+        optimal_predict (_type_): func of predicting
+
+    Returns:
+        int: mean number of times 
+    """
+  count_ls = []
+  np.random.seed(1)  # record the seed for reproducibility
+  random_array = np.random.randint(1, 101, size=(1000)) # guessed list of numbers
+  
+  for number in random_array:
+    count_ls.append(optimal_predict(number))
+
+  score = int(np.mean(count_ls))
+  print(f"Ваш алгоритм угадывает число в среднем за: {score} попытки")
+  
+  
+score_game(optimal_predict)
+
+# RUN
+if __name__ == '__main__':
+    score_game(optimal_predict)
