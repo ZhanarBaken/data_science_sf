@@ -28,6 +28,6 @@
 
 
 ### Краткая информация о данных
-....
+...
 
 :arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/%20project_0#Оглаление)
