@@ -11,7 +11,7 @@ def optimal_predict(number: int = 1) -> int:
     '''
     
     min = 1
-    max = 1000
+    max = 100
 
     number = np.random.randint(min, max) #randomly guessed number 
 
