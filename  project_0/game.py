@@ -46,7 +46,7 @@ def score_game(optimal_predict) -> int:
     """
   count_ls = []
   np.random.seed(1)  # record the seed for reproducibility
-  random_array = np.random.randint(1, 101, size=(1000)) # guessed list of numbers
+  random_array = np.random.randint(1, 101, size=(1000)) # guessed list of the numbers
   
   for number in random_array:
     count_ls.append(optimal_predict(number))
@@ -57,6 +57,6 @@ def score_game(optimal_predict) -> int:
   
 score_game(optimal_predict)
 
-# RUN
+# RUN 
 if __name__ == '__main__':
     score_game(optimal_predict)
