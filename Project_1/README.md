@@ -7,7 +7,7 @@
 [4. Этапы работы над проектом](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Этапы-работы-над-проектом)  
 [5. Результат ](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Результат)   
 [6. Выводы](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Выводы)   
-[7. Ссылки на данные](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Ссылки-на-данные)   
+[7. Ссылка на данные](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Ссылка-на-данные)   
 
 ### Описание проекта 
 Угадать загаданное компьютером число за минимальное число попыток
@@ -58,8 +58,8 @@
 
 :arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)
 
-### Ссылки на данные
+### Ссылка на данные
 
-
+https://drive.google.com/drive/folders/1emNFUZ_U2fh9zdLN5MjQJ1Ue0jjFDJQg?usp=sharing
 
 :arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)
