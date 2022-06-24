@@ -5,61 +5,42 @@
 [2. Какой кейс решаем?](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Какой-кейс-решаем)  
 [3. Краткая информация о данных](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Краткая-информация-о-данных)  
 [4. Этапы работы над проектом](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Этапы-работы-над-проектом)  
-[5. Результат ](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Результат)   
-[6. Выводы](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Выводы)   
-[7. Ссылка на данные](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Ссылка-на-данные)   
+[5. Выводы](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Выводы)   
+
 
 ### Описание проекта 
-Угадать загаданное компьютером число за минимальное число попыток
+Анализ резюме соискателей на hh.ru 
 
 :arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)  
 
 ### Какой кейс решаем?
-Нужно написать программу, которая угадывает число за минимальное число поптыок 
+Компания HeadHunter хочет построить модель, которая бы автоматически определяла примерный уровень заработной платы, подходящей пользователю, исходя из информации, которую он указал о себе. Но, как вы знаете, прежде чем построить модель, данные необходимо преобразовать, исследовать и очистить.
 
-**Условие соревнования:**
-- Компьютер загадывает целое число от 1 до 100, и нам его нужно угадать. Под «угадать», подразумевается «написать программу, которая угадывает число».
-- Алгоритм учитывает информацию о том, больше ли случайное число или меньше нужного нам.
-- Необходимо добиться того, чтобы программа угадывала число меньше, чем за 20 попыток.
-
-**Метрика качества**
-Результаты оцениваются по среднему количеству попыток при 1000 повторений
-
-**Что практикуем**
-Учится писать хороший код на python
+:arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)
 
 
 ### Краткая информация о данных
 
-Данные генерируются с помощью генератора случайных чисел библиотект Numpy в диапазоне от 0 до 100.
+Данные с резюме соискателей от hh.ru: https://drive.google.com/file/d/1P0xvmHWw0F51jYnsLKca3KoSOpgoVglu/view?usp=sharing
+Данные о курсах различных валют от MDF.RU: https://drive.google.com/file/d/1GRf-yKly5vbfJTjLSc4wyfXkydmmfCO2/view?usp=sharing
 
 :arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)
 
 
 ### Этапы работы над проектом  
-Для решение задачи использован самый быстрый метод поиска - бинарный поиск. 
 
-:arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)
+1. Базовый анализ структуры данных
 
+2. Преобразование данных
 
-### Результат
-Программа тестировалась на  диапазоне чисел от 0 до 1000 и показала удовлетворительные результаты.
+3. Разведывательный анализ
 
+4. Очистка данных
 
 :arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)
 
 
 ### Выводы
-В результате выполнения работы были изучены такие темы как:
-
-бинарный поиск 
-оформление проекта 
-выгрузка проекта в GIT HUB
-
-:arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)
-
-### Ссылка на данные
-
-https://drive.google.com/drive/folders/1emNFUZ_U2fh9zdLN5MjQJ1Ue0jjFDJQg?usp=sharing
+Учитывая информацию предоставленной  соискателями в резюме, можно спррогнозировать подходящую заработную плату, даже если она не указана. 
 
 :arrow_up:[к оглавлению](https://github.com/ZhanarBaken/data_science_zhanar/tree/main/Project_1#Оглаление)
