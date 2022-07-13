@@ -1,10 +1,10 @@
-# <center>  PROJECT-2. Подгрузка новых данных. Уточнение анализа  
+# <center>  PROJECT-2. Подгрузка новых данных. Уточнение анализа  (BY SQL)
 
 **Задание 2.1**    
 *Рассчитайте максимальный возраст (max_age) кандидата в таблице.*    
 
 SELECT    
-    MAX(age) max_age    
+    MAX(age) AS max_age    
 FROM hh.candidate   
 
 <image src="/project_2/images/picture_0.jpg" alt="Текст с описанием картинки">
@@ -15,7 +15,7 @@ FROM hh.candidate
 *Теперь давайте рассчитаем минимальный возраст (min_age) кандидата в таблице.*   
 
 SELECT   
-    MIN(age) min_age   
+    MIN(age) AS min_age   
 FROM hh.candidate   
 
 <image src="/project_2/images/picture_1.jpg" alt="Текст с описанием картинки">
@@ -29,7 +29,7 @@ FROM hh.candidate
 *Отсортируйте результат по возрасту в обратном порядке.*   
 
 SELECT  
-    DISTINCT age age,  
+    DISTINCT age,  
     COUNT(id) cnt  
 FROM hh.candidate  
 GROUP BY age  
@@ -46,7 +46,7 @@ ORDER BY age DESC
 SELECT   
     COUNT(id) cnt   
 FROM hh.candidate   
-WHERE age BETWEEN 41 and 99   
+WHERE age BETWEEN 41 AND 99 --фильтруем по 99 лет
 
 <image src="/project_2/images/picture_3.jpg" alt="Текст с описанием картинки">
 
@@ -61,7 +61,7 @@ SELECT
     city.title AS city,   
     COUNT(cand.id) AS cnt   
 FROM hh.candidate AS cand   
-    JOIN hh.city on cand.city_id = city.id   
+    JOIN hh.city ON cand.city_id = city.id   
 GROUP BY city   
 ORDER BY cnt DESC   
 
@@ -82,9 +82,9 @@ SELECT
     city.title AS city,    
     cand.employment_type    
 FROM hh.candidate AS cand    
-     JOIN hh.city  on cand.city_id = city.id   
-WHERE cand.employment_type like '%проектная работа%'    
-    and city.title = 'Москва'   
+     JOIN hh.city ON cand.city_id = city.id   
+WHERE cand.employment_type LIKE '%проектная работа%'    
+    AND city.title = 'Москва'   
 ORDER BY cand.id   
 
 <image src="/project_2/images/picture_5.jpg" alt="Текст с описанием картинки">
@@ -103,12 +103,14 @@ SELECT
     city.title AS city,    
     cand.employment_type  
 FROM hh.candidate AS cand  
-     JOIN hh.city  on cand.city_id = city.id  
-WHERE cand.employment_type like '%проектная работа%'   
-    and city.title = 'Москва'   
-    and (lower(desirable_occupation) like  '%разработчик%'   
-    or lower(desirable_occupation) like  '%аналитик%'   
-    or lower(desirable_occupation) like  '%программист%')   
+     JOIN hh.city ON cand.city_id = city.id  
+WHERE cand.employment_type  LIKE '%проектная работа%'   
+    AND city.title = 'Москва'   
+    AND /* сначала пишем AND и далее в скобках через OR перечисляем IT-профессии, 
+    для того чтобы в выборку вошли только нужные данные*/
+    (LOWER(desirable_occupation)    LIKE  '%разработчик%'  --через LOWER приводим текст в нижний регистр 
+    OR LOWER(desirable_occupation)  LIKE  '%аналитик%'   
+    OR LOWER(desirable_occupation)  LIKE  '%программист%')
 ORDER BY cand.id   
 
 <image src="/project_2/images/picture_6.jpg" alt="Текст с описанием картинки">
@@ -139,8 +141,8 @@ ORDER BY city, id
 SELECT  
     COUNT(id)  
 FROM hh.candidate   
-WHERE (gender = 'M'and  age BETWEEN 65 and 99)   
-    or (gender = 'F' and age BETWEEN 60 and 99)  
+WHERE (gender = 'M' AND  age BETWEEN 65 AND 99) --не забываем фильтровать выбор 100 лет 
+    OR (gender = 'F' AND age BETWEEN 60 AND 99) --не забываем фильтровать выбор 100 лет 
 
 <image src="/project_2/images/picture_8.jpg" alt="Текст с описанием картинки">
 
@@ -160,11 +162,12 @@ SELECT
     cand.employment_type,   
     tt.title AS timetable_type     
 FROM hh.candidate AS cand   
-    JOIN hh.city  on cand.city_id = city.id   
-    JOIN hh.candidate_timetable_type AS ctt on ctt.candidate_id = cand.id  
-    JOIN hh.timetable_type AS tt on tt.id = ctt.timetable_id   
+    JOIN hh.city ON cand.city_id = city.id   
+    JOIN hh.candidate_timetable_type AS ctt ON ctt.candidate_id = cand.id  
+    JOIN hh.timetable_type AS tt ON tt.id = ctt.timetable_id  /*для того чтобы добавить названия категорий графика работы
+    сначала присоедиянем доп.таблицу, так как у кандидата может быть несколько типов рабочего графика.*/ 
 WHERE tt.title = 'вахтовый метод'  
-    and (city.title in  ('Новосибирск' , 'Омск','Томск','Тюмень'))   
+    AND (city.title in  ('Новосибирск' , 'Омск','Томск','Тюмень'))   
 ORDER BY city, cand.id    
 
 <image src="/project_2/images/picture_9.jpg" alt="Текст с описанием картинки">
@@ -180,17 +183,17 @@ ORDER BY city, cand.id
 (SELECT  
     desirable_occupation,  age  
 FROM hh.candidate   
-    JOIN hh.city on city_id = city.id  
+    JOIN hh.city ON city_id = city.id  
 WHERE city.title = 'Санкт-Петербург'   
-    and age BETWEEN 16 and 21   
+    AND age BETWEEN 16 and 21   
 ORDER BY age  
-LIMIT 10)   
-UNION ALL   
+LIMIT 10)  --берем в скобки, для того, чтобы отсротировать и вывести первые 10 строк, только для этой выборки  
+UNION ALL  --присоединяем строчку с 'Total', соблюдая типизацию признаков 
 SELECT  'Total',  COUNT(candidate.id)   
 FROM hh.candidate   
-    JOIN hh.city on city_id = city.id   
+    JOIN hh.city ON city_id = city.id   
 WHERE city.title = 'Санкт-Петербург'    
-    and age BETWEEN 16 and 21   
+    AND age BETWEEN 16 AND 21   
 
 <image src="/project_2/images/picture_10.jpg" alt="Текст с описанием картинки">
 
