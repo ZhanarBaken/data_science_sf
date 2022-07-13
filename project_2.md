@@ -5,7 +5,7 @@ SELECT
     max(age) max_age    
 FROM hh.candidate   
 
-<image src="/images/picture.jpg" alt="Текст с описанием картинки">
+<image src="/images/picture_0.jpg" >
 
 <center> ----------------------------------------------------------------------------
 
@@ -15,6 +15,8 @@ FROM hh.candidate
 SELECT   
     min(age) min_age   
 FROM hh.candidate   
+
+<image src="/images/picture_1.jpg" >
 
 *Какие выводы мы можем сделать? Если 14 лет в качестве минимального значения возраста хоть как-то может претендовать на адекватность, то 100 лет в качестве значения максимального возраста — это явно какая-то ошибка.*
 
