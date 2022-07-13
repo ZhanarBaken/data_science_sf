@@ -5,6 +5,8 @@ SELECT
     max(age) max_age    
 FROM hh.candidate   
 
+<image src="/images/picture.jpg" alt="Текст с описанием картинки">
+
 <center> ----------------------------------------------------------------------------
 
 **Задание 2.2**  
@@ -48,10 +50,10 @@ WHERE age between 41 and 99
 *Группировку таблицы необходимо провести по столбцу title, результат отсортируйте по количеству в обратном порядке.*   
 
 SELECT   
-    city.title as city,   
-    count(cand.id) as cnt   
-FROM hh.candidate as cand   
-    join hh.city as city  on cand.city_id = city.id   
+    city.title AS city,   
+    count(cand.id) AS cnt   
+FROM hh.candidate AS cand   
+    join hh.city AS city  on cand.city_id = city.id   
 GROUP BY city   
 ORDER BY cnt desc   
 
@@ -67,11 +69,11 @@ SELECT
     cand.gender,   
     cand.age,   
     cand.desirable_occupation,    
-    city.title as city,    
+    city.title AS city,    
     cand.employment_type    
 
-FROM hh.candidate as cand    
-     join hh.city as city  on cand.city_id = city.id   
+FROM hh.candidate AS cand    
+     join hh.city AS city  on cand.city_id = city.id   
 WHERE cand.employment_type like '%проектная работа%'    
     and city.title = 'Москва'   
 ORDER BY cand.id   
@@ -87,10 +89,10 @@ SELECT
     cand.gender,  
     cand.age,  
     cand.desirable_occupation,   
-    city.title as city,    
+    city.title AS city,    
     cand.employment_type  
-FROM hh.candidate as cand  
-     join hh.city as city  on cand.city_id = city.id  
+FROM hh.candidate AS cand  
+     join hh.city AS city  on cand.city_id = city.id  
 WHERE cand.employment_type like '%проектная работа%'   
     and city.title = 'Москва'   
     and (lower(desirable_occupation) like  '%разработчик%'   
@@ -106,10 +108,10 @@ ORDER BY cand.id
 *Отсортируйте результат по городу и id кандидата.*
 
 SELECT   
-    cand.id as id,  
-    city.title as city   
-FROM hh.candidate as cand   
-     join hh.city as city  on cand.city_id = city.id   
+    cand.id AS id,  
+    city.title AS city   
+FROM hh.candidate AS cand   
+     join hh.city AS city  on cand.city_id = city.id   
 WHERE current_occupation = desirable_occupation    
 ORDER BY city, id   
 
@@ -137,13 +139,13 @@ SELECT
     cand.gender, 
     cand.age, 
     cand.desirable_occupation, 
-    city.title as city,  
+    city.title AS city,  
     cand.employment_type,  
-    tt.title as timetable_type  
-FROM hh.candidate as cand  
-    join hh.city as city  on cand.city_id = city.id   
-    join hh.CANDIDATE_TIMETABLE_TYPE as ctt on ctt.candidate_id = cand.id  
-    join hh.TIMETABLE_TYPE as tt on tt.id = ctt.timetable_id   
+    tt.title AS timetable_type  
+FROM hh.candidate AS cand  
+    join hh.city AS city  on cand.city_id = city.id   
+    join hh.CANDIDATE_TIMETABLE_TYPE AS ctt on ctt.candidate_id = cand.id  
+    join hh.TIMETABLE_TYPE AS tt on tt.id = ctt.timetable_id   
 WHERE tt.title = 'вахтовый метод'  
     and (city.title in  ('Новосибирск' , 'Омск','Томск','Тюмень'))   
 ORDER BY city, cand.id    
