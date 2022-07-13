@@ -18,7 +18,7 @@ SELECT
     min(age) min_age   
 FROM hh.candidate   
 
-<image src="/images/picture_1.jpg" alt="Текст с описанием картинки">
+<image src="/project_2/images/picture_1.jpg" alt="Текст с описанием картинки">
 
 *Какие выводы мы можем сделать? Если 14 лет в качестве минимального значения возраста хоть как-то может претендовать на адекватность, то 100 лет в качестве значения максимального возраста — это явно какая-то ошибка.*
 
@@ -35,6 +35,8 @@ FROM hh.candidate
 GROUP BY age  
 ORDER BY age desc   
 
+<image src="/project_2/images/picture_2.jpg" alt="Текст с описанием картинки">
+
 <center> ----------------------------------------------------------------------------
 
 **Задание 2.4**   
@@ -44,7 +46,9 @@ ORDER BY age desc
 SELECT   
     count(id) cnt   
 FROM hh.candidate   
-WHERE age between 41 and 99   
+WHERE age BETWEEN 41 and 99   
+
+<image src="/project_2/images/picture_3.jpg" alt="Текст с описанием картинки">
 
 <center> ----------------------------------------------------------------------------
 
@@ -61,6 +65,8 @@ FROM hh.candidate AS cand
 GROUP BY city   
 ORDER BY cnt desc   
 
+<image src="/project_2/images/picture_4.jpg" alt="Текст с описанием картинки">
+
 <center> ----------------------------------------------------------------------------
 
 **Задание 3.2**  
@@ -75,12 +81,13 @@ SELECT
     cand.desirable_occupation,    
     city.title AS city,    
     cand.employment_type    
-
 FROM hh.candidate AS cand    
      join hh.city AS city  on cand.city_id = city.id   
 WHERE cand.employment_type like '%проектная работа%'    
     and city.title = 'Москва'   
 ORDER BY cand.id   
+
+<image src="/project_2/images/picture_5.jpg" alt="Текст с описанием картинки">
 
 <center> ----------------------------------------------------------------------------
 
@@ -104,6 +111,8 @@ WHERE cand.employment_type like '%проектная работа%'
     or lower(desirable_occupation) like  '%программист%')   
 ORDER BY cand.id   
 
+<image src="/project_2/images/picture_6.jpg" alt="Текст с описанием картинки">
+
 <center> ----------------------------------------------------------------------------
 
 **Задание 3.4**   
@@ -119,6 +128,8 @@ FROM hh.candidate AS cand
 WHERE current_occupation = desirable_occupation    
 ORDER BY city, id   
 
+<image src="/project_2/images/picture_7.jpg" alt="Текст с описанием картинки">
+
 <center> ----------------------------------------------------------------------------
 
 **Задание 3.5**  
@@ -128,8 +139,10 @@ ORDER BY city, id
 SELECT  
     count(id)  
 FROM hh.candidate   
-WHERE (gender = 'M'and  age between 65 and 99)   
-    or (gender = 'F' and age between 60 and 99)  
+WHERE (gender = 'M'and  age BETWEEN 65 and 99)   
+    or (gender = 'F' and age BETWEEN 60 and 99)  
+
+<image src="/project_2/images/picture_8.jpg" alt="Текст с описанием картинки">
 
 <center> ----------------------------------------------------------------------------
 
@@ -154,6 +167,8 @@ WHERE tt.title = 'вахтовый метод'
     and (city.title in  ('Новосибирск' , 'Омск','Томск','Тюмень'))   
 ORDER BY city, cand.id    
 
+<image src="/project_2/images/picture_9.jpg" alt="Текст с описанием картинки">
+
 <center> ----------------------------------------------------------------------------
 
 **Задание 4.2**   
@@ -168,17 +183,18 @@ ORDER BY city, cand.id
 FROM hh.candidate   
     join hh.city on city_id = hh.city.id  
 WHERE hh.city.title = 'Санкт-Петербург'   
-    and age between 16 and 21   
+    and age BETWEEN 16 and 21   
 ORDER BY age  
 limit 10)   
 UNION ALL   
-   
 SELECT   
     'Total',   
     count(hh.candidate.id)   
 FROM hh.candidate   
     join hh.city on city_id = hh.city.id   
 WHERE hh.city.title = 'Санкт-Петербург'    
-    and age between 16 and 21   
+    and age BETWEEN 16 and 21   
+
+<image src="/project_2/images/picture_10.jpg" alt="Текст с описанием картинки">
 
 <center> ----------------------------------------------------------------------------    
