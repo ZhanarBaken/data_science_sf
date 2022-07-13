@@ -7,7 +7,7 @@ SELECT
     max(age) max_age    
 FROM hh.candidate   
 
-<image src="/images/picture_0.jpg" alt="Текст с описанием картинки">
+<image src="/project_2/images/picture_0.jpg" alt="Текст с описанием картинки">
 
 <center> ----------------------------------------------------------------------------
 
