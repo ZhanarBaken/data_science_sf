@@ -152,14 +152,14 @@ WHERE (gender = 'M'and  age BETWEEN 65 and 99)
 *Формат выборки: gender, age, desirable_occupation, city, employment_type, timetable_type.*  
 *Отсортируйте результат по городу и номеру кандидата.*   
 
-SELECT 
-    cand.gender, 
-    cand.age, 
-    cand.desirable_occupation, 
-    city.title AS city,  
-    cand.employment_type,  
-    tt.title AS timetable_type  
-FROM hh.candidate AS cand  
+SELECT   
+    cand.gender,  
+    cand.age,  
+    cand.desirable_occupation,  
+    city.title AS city,    
+    cand.employment_type,   
+    tt.title AS timetable_type     
+FROM hh.candidate AS cand   
     join hh.city AS city  on cand.city_id = city.id   
     join hh.CANDIDATE_TIMETABLE_TYPE AS ctt on ctt.candidate_id = cand.id  
     join hh.TIMETABLE_TYPE AS tt on tt.id = ctt.timetable_id   
