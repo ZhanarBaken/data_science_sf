@@ -4,7 +4,7 @@
 *Рассчитайте максимальный возраст (max_age) кандидата в таблице.*    
 
 SELECT    
-    max(age) max_age    
+    MAX(age) max_age    
 FROM hh.candidate   
 
 <image src="/project_2/images/picture_0.jpg" alt="Текст с описанием картинки">
@@ -15,7 +15,7 @@ FROM hh.candidate
 *Теперь давайте рассчитаем минимальный возраст (min_age) кандидата в таблице.*   
 
 SELECT   
-    min(age) min_age   
+    MIN(age) min_age   
 FROM hh.candidate   
 
 <image src="/project_2/images/picture_1.jpg" alt="Текст с описанием картинки">
@@ -29,11 +29,11 @@ FROM hh.candidate
 *Отсортируйте результат по возрасту в обратном порядке.*   
 
 SELECT  
-    distinct age age,  
-    count(id) cnt  
+    DISTINCT age age,  
+    COUNT(id) cnt  
 FROM hh.candidate  
 GROUP BY age  
-ORDER BY age desc   
+ORDER BY age DESC   
 
 <image src="/project_2/images/picture_2.jpg" alt="Текст с описанием картинки">
 
@@ -44,7 +44,7 @@ ORDER BY age desc
 *Найдите количество кандидатов, которые старше данного возраста. Не забудьте отфильтровать «ошибочный» возраст 100.*
 
 SELECT   
-    count(id) cnt   
+    COUNT(id) cnt   
 FROM hh.candidate   
 WHERE age BETWEEN 41 and 99   
 
@@ -59,11 +59,11 @@ WHERE age BETWEEN 41 and 99
 
 SELECT   
     city.title AS city,   
-    count(cand.id) AS cnt   
+    COUNT(cand.id) AS cnt   
 FROM hh.candidate AS cand   
-    join hh.city AS city  on cand.city_id = city.id   
+    JOIN hh.city on cand.city_id = city.id   
 GROUP BY city   
-ORDER BY cnt desc   
+ORDER BY cnt DESC   
 
 <image src="/project_2/images/picture_4.jpg" alt="Текст с описанием картинки">
 
@@ -82,7 +82,7 @@ SELECT
     city.title AS city,    
     cand.employment_type    
 FROM hh.candidate AS cand    
-     join hh.city AS city  on cand.city_id = city.id   
+     JOIN hh.city  on cand.city_id = city.id   
 WHERE cand.employment_type like '%проектная работа%'    
     and city.title = 'Москва'   
 ORDER BY cand.id   
@@ -103,7 +103,7 @@ SELECT
     city.title AS city,    
     cand.employment_type  
 FROM hh.candidate AS cand  
-     join hh.city AS city  on cand.city_id = city.id  
+     JOIN hh.city  on cand.city_id = city.id  
 WHERE cand.employment_type like '%проектная работа%'   
     and city.title = 'Москва'   
     and (lower(desirable_occupation) like  '%разработчик%'   
@@ -124,7 +124,7 @@ SELECT
     cand.id AS id,  
     city.title AS city   
 FROM hh.candidate AS cand   
-     join hh.city AS city  on cand.city_id = city.id   
+     JOIN hh.city  on cand.city_id = city.id   
 WHERE current_occupation = desirable_occupation    
 ORDER BY city, id   
 
@@ -137,7 +137,7 @@ ORDER BY city, id
 *Пенсионный возраст для мужчин наступает в 65 лет, для женщин — в 60 лет.*  
 
 SELECT  
-    count(id)  
+    COUNT(id)  
 FROM hh.candidate   
 WHERE (gender = 'M'and  age BETWEEN 65 and 99)   
     or (gender = 'F' and age BETWEEN 60 and 99)  
@@ -160,9 +160,9 @@ SELECT
     cand.employment_type,   
     tt.title AS timetable_type     
 FROM hh.candidate AS cand   
-    join hh.city AS city  on cand.city_id = city.id   
-    join hh.CANDIDATE_TIMETABLE_TYPE AS ctt on ctt.candidate_id = cand.id  
-    join hh.TIMETABLE_TYPE AS tt on tt.id = ctt.timetable_id   
+    JOIN hh.city  on cand.city_id = city.id   
+    JOIN hh.candidate_timetable_type AS ctt on ctt.candidate_id = cand.id  
+    JOIN hh.timetable_type AS tt on tt.id = ctt.timetable_id   
 WHERE tt.title = 'вахтовый метод'  
     and (city.title in  ('Новосибирск' , 'Омск','Томск','Тюмень'))   
 ORDER BY city, cand.id    
@@ -178,21 +178,18 @@ ORDER BY city, cand.id
 *Напишите запрос, который позволит получить выборку вида:*  
 
 (SELECT  
-    desirable_occupation,  
-    age  
+    desirable_occupation,  age  
 FROM hh.candidate   
-    join hh.city on city_id = hh.city.id  
-WHERE hh.city.title = 'Санкт-Петербург'   
+    JOIN hh.city on city_id = city.id  
+WHERE city.title = 'Санкт-Петербург'   
     and age BETWEEN 16 and 21   
 ORDER BY age  
-limit 10)   
+LIMIT 10)   
 UNION ALL   
-SELECT   
-    'Total',   
-    count(hh.candidate.id)   
+SELECT  'Total',  COUNT(candidate.id)   
 FROM hh.candidate   
-    join hh.city on city_id = hh.city.id   
-WHERE hh.city.title = 'Санкт-Петербург'    
+    JOIN hh.city on city_id = city.id   
+WHERE city.title = 'Санкт-Петербург'    
     and age BETWEEN 16 and 21   
 
 <image src="/project_2/images/picture_10.jpg" alt="Текст с описанием картинки">
