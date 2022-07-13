@@ -1,4 +1,5 @@
-# <center>  PROJECT-2. Подгрузка новых данных. Уточнение анализа  (BY SQL)
+# <center>  PROJECT-2. Подгрузка новых данных. Уточнение анализа  
+# <center> (BY SQL) 
 
 **Задание 2.1**    
 *Рассчитайте максимальный возраст (max_age) кандидата в таблице.*    
@@ -107,8 +108,8 @@ FROM hh.candidate AS cand
 WHERE cand.employment_type  LIKE '%проектная работа%'   
     AND city.title = 'Москва'   
     AND /* сначала пишем AND и далее в скобках через OR перечисляем IT-профессии, 
-    для того чтобы в выборку вошли только нужные данные*/
-    (LOWER(desirable_occupation)    LIKE  '%разработчик%'  --через LOWER приводим текст в нижний регистр 
+    для того чтобы в выборку вошли предыдущие условия фильтрации тоже*/   
+    (LOWER(desirable_occupation)    LIKE  '%разработчик%'  --через LOWER приводим текст в нижний регистр   
     OR LOWER(desirable_occupation)  LIKE  '%аналитик%'   
     OR LOWER(desirable_occupation)  LIKE  '%программист%')
 ORDER BY cand.id   
@@ -141,8 +142,8 @@ ORDER BY city, id
 SELECT  
     COUNT(id)  
 FROM hh.candidate   
-WHERE (gender = 'M' AND  age BETWEEN 65 AND 99) --не забываем фильтровать выбор 100 лет 
-    OR (gender = 'F' AND age BETWEEN 60 AND 99) --не забываем фильтровать выбор 100 лет 
+WHERE (gender = 'M' AND  age BETWEEN 65 AND 99) --не забываем фильтровать выбор 100 лет  
+    OR (gender = 'F' AND age BETWEEN 60 AND 99) --не забываем фильтровать выбор 100 лет  
 
 <image src="/project_2/images/picture_8.jpg" alt="Текст с описанием картинки">
 
@@ -164,8 +165,8 @@ SELECT
 FROM hh.candidate AS cand   
     JOIN hh.city ON cand.city_id = city.id   
     JOIN hh.candidate_timetable_type AS ctt ON ctt.candidate_id = cand.id  
-    JOIN hh.timetable_type AS tt ON tt.id = ctt.timetable_id  /*для того чтобы добавить названия категорий графика работы
-    сначала присоедиянем доп.таблицу, так как у кандидата может быть несколько типов рабочего графика.*/ 
+    JOIN hh.timetable_type AS tt ON tt.id = ctt.timetable_id  /* для того чтобы добавить названия категорий графика работы
+    сначала присоедиянем доп.таблицу, так как у кандидата может быть несколько типов рабочего графика. */    
 WHERE tt.title = 'вахтовый метод'  
     AND (city.title in  ('Новосибирск' , 'Омск','Томск','Тюмень'))   
 ORDER BY city, cand.id    
