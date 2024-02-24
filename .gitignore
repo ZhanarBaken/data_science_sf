@@ -1,0 +1,10 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+# Игнорировать файлы с расширением .log
+*.log
+
+# Игнорировать папку с именем "temp"
+temp/
+
+# Игнорировать папку с именем "data"
+data/
